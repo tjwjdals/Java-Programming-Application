@@ -53,6 +53,11 @@ public abstract class Pokemon {
 
     public abstract void attack();
 
+    public void attack(Pokemon targetPokemon) {
+        System.out.println(this.name + "이(가) " + targetPokemon.name + "에게 공격 시전!");
+        // targetPokemon.hp = this.
+    }
+
 
     public void evolve(){  // 매개변수 제거
         if(this instanceof Pikachu){
