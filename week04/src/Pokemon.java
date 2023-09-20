@@ -52,6 +52,8 @@ public abstract class Pokemon {
     }
 
     public abstract void attack();
+
+
     public void evolve(){  // 매개변수 제거
         if(this instanceof Pikachu){
             System.out.println("삐까삐까~");
