@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class PokemonGame {
     public static void main(String[] args) {
         System.out.println("포켓몬 게임을 시작합니다.\n 야생 포켓몬이 나타났습니다.");
@@ -17,7 +19,9 @@ public class PokemonGame {
             Wings wings = new Wings();
             Charizard charizard = new Charizard(wings);
         } else {
-            // 여기는 영원히 실행 안됩니다.
+            System.out.println("여기는 영원히 실행 안됩니다.");
         }
+
+
     }
 }
