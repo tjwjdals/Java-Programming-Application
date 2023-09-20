@@ -1,0 +1,24 @@
+echo "This repository contains Java practice code and assignments used in the 'Java Programming Application' course." >> README.md
+ls
+mv README.md ../
+
+git init
+
+git config --global user.email "wjdals030903@g.shingu.ac.kr"
+git config --global user.name "tjwjdals"
+
+git branch -M main
+git remote add origin https://github.com/tjwjdals/Java-Programming-Application.git
+git -u origin main
+
+
+git add .
+git status
+git log
+git commit -m "week03 v05cd .."
+git push
+
+git checkout (git log 의 commit 뒤의 영숫자 7자리)
+git checkout -	// 돌아가기
+
+git restore --
