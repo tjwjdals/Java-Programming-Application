@@ -1,5 +1,7 @@
 package Pokemonster;
 
+import java.util.ArrayList;
+
 public class Squirtle extends Pokemon {
     public Squirtle(Flyable f) {
         super();  // 부모 클래스의 기본 생성자 호출 (생략 가능)
@@ -12,8 +14,18 @@ public class Squirtle extends Pokemon {
         this.setHp(44);
         this.name = "꼬부기";
         this.flyable = f;   // Association, Has- a (Aggregation)
-        this.skills = new String[]{"물대포", "고속스핀", "물의파동"};
-        this.specialAttackRate = new int[]{40, 50, 60};
+        // this.skills = new String[]{"물대포", "고속스핀", "물의파동"};
+        // this.specialAttackRate = new int[]{40, 50, 60};
+
+        this.skills = new ArrayList<>();
+        skills.add("물대포");
+        skills.add("고속스핀");
+        skills.add("물의파동");
+
+        this.specialAttackRate = new ArrayList<>();
+        specialAttackRate.add(40);
+        specialAttackRate.add(50);
+        specialAttackRate.add(60);
     }
 
     @Override
