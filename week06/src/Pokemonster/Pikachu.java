@@ -1,4 +1,6 @@
-public class Pikachu extends Pokemon{
+package Pokemonster;
+
+public class Pikachu extends Pokemon {
     public Pikachu(Flyable f) {
         System.out.println("피카피카..");
         this.level = 1;

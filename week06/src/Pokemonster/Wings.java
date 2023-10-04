@@ -1,4 +1,6 @@
-public class Wings implements Flyable{
+package Pokemonster;
+
+public class Wings implements Flyable {
 //    @Override
 //    public void fly() {
 //
