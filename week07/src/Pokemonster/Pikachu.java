@@ -27,6 +27,7 @@ public class Pikachu extends Pokemon {
         // specialAttackRate.add(65);
         // specialAttackRate.add(20);
 
+        // <>안에 String,Integer 생략 가능.
         this.skills = new ArrayList<String>(Arrays.asList("10만볼트", "스파크", "볼부비부비"));
         this.specialAttackRate = new ArrayList<Integer>(Arrays.asList(90, 65, 20));
     }
