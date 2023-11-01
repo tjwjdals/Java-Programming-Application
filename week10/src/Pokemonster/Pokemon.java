@@ -1,5 +1,7 @@
 package Pokemonster;
 
+import fly.Flyable;
+
 import java.util.List;
 
 //public final class Pokemonster.Pokemon {
@@ -13,7 +15,7 @@ public abstract class Pokemon {
 
     //    protected String[] skills;
 //    protected int[] specialAttackRate;
-    protected List<String> skills;  // List에 커서 두고 ctrl+B 누르면 List의 type 보여줌.
+    protected List<String> skills;
     protected List<Integer> specialAttackRate;
     private static int pokemonCount = 0;  // 클래스(정적) 변수
 

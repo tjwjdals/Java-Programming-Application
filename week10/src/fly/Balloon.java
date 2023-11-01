@@ -1,6 +1,6 @@
 package fly;
 
-import Pokemonster.Flyable;
+import fly.Flyable;
 
 public class Balloon implements Flyable {
     @Override

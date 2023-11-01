@@ -1,5 +1,7 @@
 package fly;
 
+import fly.Flyable;
+
 public class JetPack implements Flyable {
     @Override
     public void fly() {

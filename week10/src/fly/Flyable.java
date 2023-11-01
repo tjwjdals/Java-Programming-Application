@@ -1,11 +1,11 @@
 package fly;
 
 public interface Flyable {
-//    public Flyable(){
+//    public fly.Flyable(){
 //
 //    }
 
-    //Pokemon pokemon;
+    //Pokemonster.Pokemon pokemon;
 
     //void fly();
     default void fly(){
