@@ -61,7 +61,8 @@ public class PokemonGame {
                         }
                     }
                 }else if(menu == 2){
-                    System.out.println("현재 지역을 탈풀합니다~~~");
+                    player.performFly();
+                    System.out.println("현재 지역을 탈출합니다~~~");
                     produceEnemy(); // 적군 생성(메소드 호출)
                 }else if(menu == 3){
                     System.out.println("게임을 종료합니다.");
