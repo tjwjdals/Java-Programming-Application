@@ -5,20 +5,12 @@ import fly.Wings;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.function.UnaryOperator;
 
 public class PokemonGame {
     public static Pokemon enemy = null;
-
     public static void main(String[] args) {
-//        System.out.println((int)(Math.random() * 11) + 74);
-        System.out.println("포켓몬 게임을 시작합니다\n야생 포켓몬이 나타났습니다");
-//        System.out.println(Math.random());  // 0.0 <= x < 1.0
-//        System.out.println((int)(Math.random()*6)+1);  // 1 <= x <= 6
-
-
-
-        // 플레이어 포켓몬스터 선택
-        // Pokemonster.Pokemon player = new Pokemonster.Pokemon();  // 추상클래스의 객체는 생성 불가
+        System.out.println("포켓몬 게임을 시작합니다...");
 
         try{
             Pokemon player = null;  // 추상클래스의 변수 선언은 가능 (upcasting 용)
@@ -27,8 +19,8 @@ public class PokemonGame {
                 System.out.print("포켓몬을 고르세요.\n1) 피카츄   2) 꼬부기   3) 리자몽 : ");
                 int pokemonPick = scanner.nextInt();
                 if(pokemonPick == 1){
-                    // player = new Pikachu(new NoFly());
-                    player = new Pikachu(() -> System.out.println("로켓 추진기로 날아갑니다"));
+                    //player = new Pikachu(new NoFly());
+                    player = new Pikachu(()-> System.out.println("로켓 추진기로 날아갑니다"));
                     break;
                 }else if(pokemonPick == 2){
                     player = new Squirtle(new NoFly());
@@ -41,9 +33,11 @@ public class PokemonGame {
                 }
             }
 
+            produceEnemy();  // 적군 생성
+
             int menu, skillMenu;
             while(true){
-                System.out.print("\t1) 전투   2) 도망   3)물약(힐포션)   4) 종료 : ");
+                System.out.print("\t1) 전투   2) 도망   3) 물약(힐포션)   4) 종료 : ");
                 menu = scanner.nextInt();
                 if(menu == 1){
                     while(true){
@@ -64,8 +58,14 @@ public class PokemonGame {
                 }else if(menu == 2){
                     player.performFly();
                     System.out.println("현재 지역을 탈출합니다~~~");
-                    produceEnemy(); // 적군 생성(메소드 호출)
+                    produceEnemy();
                 }else if(menu == 3){
+                    System.out.println("힐링 포션을 마십니다. 30hp 증가합니다");
+                    UnaryOperator<Integer> healPotion = hp -> hp + 30;
+                    int newHp = healPotion.apply(player.getHp());
+                    player.setHp(newHp);
+                    System.out.println(player.name + "의 체력은 " + player.getHp() + "입니다!");
+                }else if(menu == 4){
                     System.out.println("게임을 종료합니다.");
                     break;
                 }else{
@@ -89,7 +89,6 @@ public class PokemonGame {
             System.out.println("프로그램 종료!");
         }
     }
-
     private static void produceEnemy() {
         // 적군 포켓몬스터 랜덤 생성
         System.out.println("야생 포켓몬이 나타났습니다");
