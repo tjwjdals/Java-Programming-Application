@@ -3,12 +3,15 @@ package Pokemonster;
 import fly.NoFly;
 import fly.Wings;
 
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
+
 
 public class PokemonGame {
     public static Pokemon enemy = null;
+    public static int i = 0;
     public static void main(String[] args) {
         System.out.println("포켓몬 게임을 시작합니다...");
 
@@ -42,7 +45,33 @@ public class PokemonGame {
                 if(menu == 1){
                     while(true){
                         //System.out.print("전투 기술 1) " + player.skills[0] + "   2) " +  player.skills[1] + "   3) " +  player.skills[2] + " : ");
-                        System.out.print("전투 기술 1) " + player.skills.get(0) + "   2) " +  player.skills.get(1) + "   3) " +  player.skills.get(2) + " : ");
+                        //System.out.print("전투 기술 1) " + player.skills.get(0) + "   2) " +  player.skills.get(1) + "   3) " +  player.skills.get(2) + " : ");
+                        //System.out.print("전투 기술 1) " + player.skills.get(1) + "   2) " +  player.skills.get(2) + "   3) " +  player.skills.get(3) + " : ");
+
+                        System.out.print("전투 기술");
+                        //Set<Integer> keySet = player.skills.keySet();
+                        //ArrayList<Integer> listOfKeys = new ArrayList<Integer>(keySet);
+                        //System.out.println(listOfKeys.get(1));
+
+                        //Collection<String> valueSet = player.skills.values();
+                        //ArrayList<String> listOfValues = new ArrayList<String>(valueSet);
+                        //System.out.println(listOfValues.get(1));
+
+                        Collection<String> skillValues = player.skills.values();
+                        ArrayList<String> skillLists = new ArrayList<String>(skillValues);
+
+                        // for(String s : listOfValues)
+                        //    System.out.println(s + " ");
+                        //for(int i = 0; i < listOfValues.size(); i++)
+                        //    System.out.println((i+1) + ") " + listOfValues.get(i));
+                        //for(int i = 0; i < skillLists.size(); i++)
+                        //    System.out.println((i+1) + ") " + skillLists.get(i));
+
+                        i = 0;
+                        skillLists.stream().forEach(s -> {
+                            System.out.println(++i + ") " + s);
+                        });
+
                         skillMenu = scanner.nextInt();
                         if (skillMenu <= player.skills.size())
                         {
@@ -60,10 +89,11 @@ public class PokemonGame {
                     System.out.println("현재 지역을 탈출합니다~~~");
                     produceEnemy();
                 }else if(menu == 3){
-                    System.out.println("힐링 포션을 마십니다. 30hp 증가합니다");
-                    UnaryOperator<Integer> healPotion = hp -> hp + 30;
-                    int newHp = healPotion.apply(player.getHp());
-                    player.setHp(newHp);
+                    Supplier<Integer> healPortion = () -> {
+                        System.out.println("힐링 포션을 마십니다. 30hp 증가합니다");
+                        return 30;
+                    };
+                    player.setHp(healPortion.get() + player.getHp());
                     System.out.println(player.name + "의 체력은 " + player.getHp() + "입니다!");
                 }else if(menu == 4){
                     System.out.println("게임을 종료합니다.");
@@ -89,7 +119,7 @@ public class PokemonGame {
             System.out.println("프로그램 종료!");
         }
     }
-    private static void produceEnemy() {
+    public static void produceEnemy() {
         // 적군 포켓몬스터 랜덤 생성
         System.out.println("야생 포켓몬이 나타났습니다");
         int enemyPick = (int)(Math.random()*3);
