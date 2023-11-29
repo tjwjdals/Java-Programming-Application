@@ -1,7 +1,6 @@
-@@ -0,0 +1,19 @@
-        import java.util.function.BinaryOperator;
-        import java.util.function.Consumer;
-        import java.util.function.UnaryOperator;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.UnaryOperator;
 
 public class FunctionalInterfaceTest {
     public static void main(String[] args) {
